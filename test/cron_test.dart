@@ -43,6 +43,28 @@ void main() {
     }, initialTime: DateTime(2000, 1, 1, 0, 0, 0, 0, 0));
   });
 
+  test('when a Schedule is running, then the "running" value should be [true]', () {
+    fakeAsync((async) {
+      final cron = Cron();
+
+      var count = 0;
+
+      final schedule = cron.schedule(Schedule.parse('* * * * *'), () async {
+        await Future.delayed(Duration(seconds: 10), () {
+          count++;
+        });
+      });
+
+      async.elapse(Duration(minutes: 10));
+
+      expect(schedule.running, true);
+
+      async.elapse(Duration(seconds: 10));
+
+      expect(count, 10);
+    }, initialTime: DateTime(2000, 1, 1, 0, 0, 0, 0, 0));
+  });
+
   test('should return correct cron format string.', () {
     expect(
       Schedule(hours: 13, minutes: 20, weekdays: [1, 2]).toCronString(),
