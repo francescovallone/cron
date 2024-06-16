@@ -155,7 +155,7 @@ class Schedule {
 abstract class ScheduledTask {
   Schedule get schedule;
 
-  bool get running;
+  bool get isRunning;
 
   Future cancel();
 }
@@ -217,7 +217,7 @@ class _ScheduledTask implements ScheduledTask {
   bool _overrun = false;
 
   @override
-  bool get running => _running != null;
+  bool get isRunning => _running != null;
 
   /// The datetime a Task last run.
   DateTime lastTime = DateTime(0, 0, 0, 0, 0, 0, 0);

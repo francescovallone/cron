@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+
+- Add `isRunning` property to `ScheduledTask` to check if the task is running. [#53](https://github.com/agilord/cron/pull/53) by [francescovallone](https://github.com/francescovallone)
+
 ## 0.6.0
 
 - Add `toCronString` function and improve package. [#50](https://github.com/agilord/cron/pull/50) by [mbfakourii](https://github.com/mbfakourii)
