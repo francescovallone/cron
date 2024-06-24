@@ -20,7 +20,7 @@ typedef Task = FutureOr<dynamic> Function();
 /// A cron-like time-based job scheduler.
 abstract class Cron {
   /// A cron-like time-based job scheduler.
-  factory Cron({bool useIsolates = false}) => _Cron(useIsolates: useIsolates);
+  factory Cron() => _Cron();
 
   /// Schedules a [task] running specified by the [schedule].
   ScheduledTask schedule(Schedule schedule, Task task);
@@ -175,9 +175,7 @@ const int _millisecondsPerSecond = 1000;
 
 class _Cron implements Cron {
 
-  _Cron({
-    bool useIsolates = false,
-  }) : _jobManager = JobManager();
+  _Cron() : _jobManager = JobManager();
 
   bool _closed = false;
   Timer? _timer;
